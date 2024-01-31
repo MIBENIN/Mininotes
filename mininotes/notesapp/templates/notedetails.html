@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<nav class="sidebar">
+    <div class="sidebar-top">
+        <span class="shrink-btn">
+            <i class='bx bx-chevron-left'></i>
+        </span>
+        <img src="{% static 'images/note_app_logo_white.svg' %}" class="sidebar-logo" alt="sidebar-logo-image">
+        <span class="hide sidebar-logo-text">Mini Notes</h3>
+    </div>
+
+    <div class="sidebar-links">
+        <ul>
+            <div class="active-tab"></div>
+            <li class="tooltip-element" data-tooltip="0">
+                <a href="{% url 'dashboard' %}" class="active" data-active="0">
+                    <div class="icon">
+                        <i class='bx bx-tachometer'></i>
+                        <i class='bx bxs-tachometer'></i>
+                    </div>
+                    <span class="link hide">Dashboard</span>
+                </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="1">
+                <a href="#" data-active="1">
+                    <div class="icon">
+                        <i class='bx bx-plus-circle'></i>
+                        <i class='bx bxs-plus-circle'></i>
+                    </div>
+                    <span class="link hide">Add Note</span>
+                </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="2">
+                <a href="#" data-active="2">
+                    <div class="icon">
+                        <i class='bx bx-cog'></i>
+                        <i class='bx bxs-cog'></i>
+                    </div>
+                    <span class="link hide">Settings</span>
+                </a>
+            </li>
+            <div class="tooltip">
+                <span class="show">Dashboard</span>
+                <span>Add Note</span>
+                <span>Settings</span>
+            </div>
+        </ul>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="#" class="account tooltip-element" data-tooltip="0">
+            <div class="icon">
+                <i class='bx bx-user-circle'></i>
+                <i class='bx bxs-user-circle'></i>
+            </div>
+        </a>
+        <div class="admin-user tooltip-element" data-tooltip="1">
+            <div class="admin-profile hide">
+                <img src="{% static 'images/account_circle.svg' %}" alt="" class="sidebar-account-image">
+
+                <div class="admin-info">
+                    <h3>John Doe</h3>
+                </div>
+            </div>
+            <a href="#" class="log-out">
+                <i class='bx bx-log-out'></i>
+            </a>
+        </div>
+        <div class="tooltip">
+            <span class="show">John Doe</span>
+            <span>Logout</span>
+        </div>
+    </div>
+</nav>
+<div class="note-details">
+    <header class="note-details-header content-container">
+        <h1 class="note-details-header-title">Note</h1>
+        <div class="note-details-btn-div">
+            <a href="#" class="note-details-edit-link">
+                <img src="{% static 'images/edit.svg' %}" class="note-details-edit-icon">
+                <span class="note-details-edit-link-text">Edit</span></a>
+            <a href="#" class="note-details-delete-link">
+                <img src="{% static 'images/delete.svg' %}" class="note-details-delete-icon">
+                <span class="note-details-delete-link-text">Delete</span></a>
+        </div>
+    </header>
+    <main class="notedetails-main content-container">
+        <div class="note-details-title-div">
+            <h2 class="note-details-title">Title : {{note.title}}</h2>
+            <p class="note-details-date-created">Date Created : {{note.date_created}}</p>
+            <p class="note-details-date-modified">Date Modified : {{note.date_created}}</p>
+            <h3 class="note-details-tag">Tags : {{note.tags}}</h3>
+        </div>
+        <div class="note-details-content-div">
+            {{note.content|linebreaksbr|linebreaks}}
+        </div>
+    </main>
+</div>
+
+{% endblock %}

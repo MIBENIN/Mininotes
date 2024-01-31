@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<header class="home-header">
+    <nav class="home-nav container">
+        <a href="#" class="logo"><img src="{% static 'images/note_app_logo.svg' %}" alt="logo_image"
+                class="logo-image"><span class="logo-text">MINI
+                NOTES</span></a>
+        <div>
+            <button class="sign-in-btn">Sign in</button>
+            <button class="sign-up-btn">Sign up</button>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="home-hero-section container">
+
+        <div class="home-hero-content-div">
+            <img src="{% static 'images/home-hero-image.svg' %}" alt="hero-image" class="home-hero-image">
+            <h1 class="home-hero-heading">Mini Notes: Your Ideas, Instantly Organized!</h1>
+            <p class="home-hero-desc">Take notes anywhere. Find information faster. Meeting notes, studying notes,
+                reading
+                notes - with
+                Mini Notes as your note taking app, nothing fails through the crack.</p>
+            <button class="home-hero-btn">Sign up for free</button>
+        </div>
+    </section>
+</main>
+{% endblock %}
