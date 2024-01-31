@@ -8,10 +8,10 @@
     <header class="note-details-header content-container">
         <h1 class="note-details-header-title">Note</h1>
         <div class="note-details-btn-div">
-            <a href="#" class="note-details-edit-link">
+            <a href="{% url 'noteapp:editnote' slug=note.slug %}" class="note-details-edit-link">
                 <img src="{% static 'images/edit.svg' %}" class="note-details-edit-icon">
                 <span class="note-details-edit-link-text">Edit</span></a>
-            <a href="#" class="note-details-delete-link">
+            <a href="{% url 'noteapp:deletenote' slug=note.slug %}" class="note-details-delete-link">
                 <img src="{% static 'images/delete.svg' %}" class="note-details-delete-icon">
                 <span class="note-details-delete-link-text">Delete</span></a>
         </div>

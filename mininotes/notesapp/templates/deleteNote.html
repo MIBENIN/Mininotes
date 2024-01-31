@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+<div class="deletenote">
+    <header class="deletenote-header content-container">
+        <h1>Delete Note</h1>
+    </header>
+    <main class="deletenote-main content-container">
+        <div class="delete-note-box">
+            <p class="delete-note-question">Are you sure you want to delete the note "{{ note.title }}"?</p>
+            <form method="post" action="{% url 'noteapp:deletenote' slug=note.slug %}" class="delete-note-form">
+                {% csrf_token %}
+                <button type="submit" class="delete-note-btn"><img src="{% static 'images/delete.svg' %}"
+                        class="delete-note-delete-icon">
+                    <span class="delete-note-delete-text">Delete</span></button>
+
+                <a href="{% url 'noteapp:notedetails' slug=note.slug %}" class="delete-note-cancel-link">
+                    <img src="{% static 'images/cancel.svg' %}" class="delete-note-cancel-icon">
+                    <span class="delete-note-cancel-text">Cancel</span>
+                </a>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

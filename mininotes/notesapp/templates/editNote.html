@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+<div class="editnote">
+    <header class="editnote-header content-container">
+        <h1>edit Note</h1>
+        <div>
+            <a href="{% url 'noteapp:dashboard' %}" class="edit-note-goback-link">
+                <img src="{% static 'images/back.svg' %}" class="edit-note-goback-icon">
+                <span class="edit-note-goback-text">Go to Dashboard</span></a>
+        </div>
+    </header>
+    <main class="editnote-main content-container">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="edit-note-input-div">
+                <label for="title" class="edit-note-form-label">Title</label>
+                <input type="text" class="edit-note-form-control" id="title" name="title"
+                    placeholder="Enter the note title *" value="{{ form.title.value }}">
+                {% if form.errors.title %}
+                <div class="edit-note-error-message">{{ form.errors.title.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="edit-note-input-div">
+                <label for="tag" class="edit-note-form-label">Tag</label>
+                <input type="text" class="edit-note-form-control" id="tag" name="tags"
+                    placeholder="Enter the note tag *" value="{{ form.tags.value }}">
+                {% if form.errors.tags %}
+                <div class="edit-note-error-message">{{ form.errors.tags.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="edit-note-input-div">
+                <label for="notearea" class="edit-note-form-label">Content</label>
+                <textarea class="edit-note-form-control edit-note-content-area" placeholder="Edit your note here *"
+                    name="content" id="notearea">{{ form.content.value }}</textarea>
+                {% if form.errors.content %}
+                <div class="edit-note-error-message">{{ form.errors.content.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="edit-note-save-btn">Save Note</button>
+        </form>
+    </main>
+</div>
+{% endblock %}

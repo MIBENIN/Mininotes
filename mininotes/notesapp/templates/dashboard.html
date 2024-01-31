@@ -46,8 +46,9 @@
                         <span class="note-card-date-content">{{ note.date_modified|date:"M d, y"}}</span>
                     </div>
                     <div class="note-card-delete-div">
-                        <a href="#" class="note-card-delete-link"><img src="{% static 'images/delete.svg' %}"
-                                class="note-card-delete-icon"><span class="note-card-delete-content">Delete</span></a>
+                        <a href="{% url 'noteapp:deletenote' slug=note.slug %}" class="note-card-delete-link"><img
+                                src="{% static 'images/delete.svg' %}" class="note-card-delete-icon"><span
+                                class="note-card-delete-content">Delete</span></a>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,43 @@
         <h1>Add Note</h1>
     </header>
     <main class="addnote-main content-container">
+        <!-- {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %} -->
 
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="add-note-input-div">
+                <label for="title" class="add-note-form-label">Title</label>
+                <input type="text" class="add-note-form-control" id="title" name="title"
+                    placeholder="Enter the note title *" value="{{ form.title.value }}">
+                {% if form.errors.title %}
+                <div class="add-note-error-message">{{ form.errors.title.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="add-note-input-div">
+                <label for="tag" class="add-note-form-label">Tag</label>
+                <input type="text" class="add-note-form-control" id="tag" name="tags" placeholder="Enter the note tag *"
+                    value="{{ form.tags.value }}">
+                {% if form.errors.tags %}
+                <div class="add-note-error-message">{{ form.errors.tags.0 }}</div>
+                {% endif %}
+            </div>
+            <div class="add-note-input-div">
+                <label for="notearea" class="add-note-form-label">Content</label>
+                <textarea class="add-note-form-control add-note-content-area" placeholder="Add your note here *"
+                    name="content" id="notearea">{{ form.content.value }}</textarea>
+                {% if form.errors.content %}
+                <div class="add-note-error-message">{{ form.errors.content.0 }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="add-note-save-btn">Save Note</button>
+        </form>
     </main>
 </div>
 {% endblock %}
