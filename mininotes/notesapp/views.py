@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from . models import Note
 from .forms import NoteForm
 
@@ -36,6 +37,7 @@ def addNote(request):
             note = form.save(commit=False)
             # note.user = request.user  # Assuming you have user authentication
             note.save()
+            messages.success(request, 'Note Added Successfully.')
             # Redirect to a success page or any other view
             return redirect('noteapp:dashboard')
     else:
@@ -52,7 +54,10 @@ def editNote(request, slug):
         form = NoteForm(request.POST, instance=note)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Note Edited Successfully.')
+
             return redirect('noteapp:dashboard')
+
     else:
         form = NoteForm(instance=note)
 
@@ -64,6 +69,8 @@ def deleteNote(request, slug):
 
     if request.method == 'POST':
         note.delete()
+        messages.success(request, 'Note Deleted Successfully.')
+
         return redirect('noteapp:dashboard')
 
     return render(request, 'deleteNote.html', {'page_title': "MiniNotes | Delete Note", 'note': note})

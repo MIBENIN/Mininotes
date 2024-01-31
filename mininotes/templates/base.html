@@ -26,6 +26,19 @@
 </head>
 
 <body>
+    {% if messages %}
+    <div id="message-box">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+            <button class="toast-close-btn" onclick="hideToast(this)">
+                <img src="{% static 'images/close.svg' %}" class="toast-close-btn-icon">
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endif %}
 
     {% block content %} {% endblock %}
     <script src="{% static 'js/app.js' %}"></script>
