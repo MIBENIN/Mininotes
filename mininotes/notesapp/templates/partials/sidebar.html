@@ -11,9 +11,9 @@
 
     <div class="sidebar-links">
         <ul>
-            <div class="active-tab"></div>
+            <!-- <div class="active-tab"></div> -->
             <li class="tooltip-element" data-tooltip="0">
-                <a href="{% url 'dashboard' %}" class="active" data-active="0">
+                <a href="{% url 'noteapp:dashboard' %}" data-active="0">
                     <div class="icon">
                         <i class='bx bx-tachometer'></i>
                         <i class='bx bxs-tachometer'></i>
@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="1">
-                <a href="{% url 'addnote' %}" data-active="1">
+                <a href="{% url 'noteapp:addnote' %}" data-active="1">
                     <div class="icon">
                         <i class='bx bx-plus-circle'></i>
                         <i class='bx bxs-plus-circle'></i>
@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li class="tooltip-element" data-tooltip="2">
-                <a href="{% url 'settings' %}" data-active="2">
+                <a href="{% url 'noteapp:settings' %}" data-active="2">
                     <div class="icon">
                         <i class='bx bx-cog'></i>
                         <i class='bx bxs-cog'></i>

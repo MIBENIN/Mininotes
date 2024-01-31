@@ -37,7 +37,7 @@
             <div class="note-card">
                 <div class="note-card-tag"><img src="{% static 'images/tag.svg' %}" class="note-card-tag-icon"><span
                         class="note-card-tag-content">{{note.tags}}</span></div>
-                <a href="{% url 'notedetails' slug=note.slug %}" class="note-card-title">{{ note.title }}</a>
+                <a href="{% url 'noteapp:notedetails' slug=note.slug %}" class="note-card-title">{{ note.title }}</a>
                 <p class="note-card-content">{{ note.content|slice:":60" }}{% if note.content|length > 20 %}...</p>
                 {% endif %}
                 <div class="note-card-details-div">

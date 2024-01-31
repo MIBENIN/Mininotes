@@ -1,9 +1,17 @@
-const shrink_btn = document.querySelector(".shrink-btn");
-const sidebar_links = document.querySelectorAll(".sidebar-links a");
-const active_tab = document.querySelector(".active-tab");
-const tooltip_elements = document.querySelectorAll(".tooltip-element");
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll(".sidebar-links a");
 
-let activeIndex;
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("active");
+    }
+  });
+});
+
+const shrink_btn = document.querySelector(".shrink-btn");
+// const sidebar_links = document.querySelectorAll(".sidebar-links a");
+const tooltip_elements = document.querySelectorAll(".tooltip-element");
 
 shrink_btn.addEventListener("click", () => {
   document.body.classList.toggle("shrink");
@@ -15,27 +23,6 @@ shrink_btn.addEventListener("click", () => {
     shrink_btn.classList.remove("hovered");
   }, 500);
 });
-
-function moveActiveTab() {
-  let topPosition = activeIndex * 58 + 2.5;
-
-  if (activeIndex > 3) {
-    topPosition += sidebar_links.clientHeight;
-  }
-
-  active_tab.style.top = `${topPosition}px`;
-}
-
-function changeLink() {
-  sidebar_links.forEach((sideLink) => sideLink.classList.remove("active"));
-  this.classList.add("active");
-
-  activeIndex = this.dataset.active;
-
-  moveActiveTab();
-}
-
-sidebar_links.forEach((link) => link.addEventListener("click", changeLink));
 
 function showTooltip() {
   let tooltip = this.parentNode.lastElementChild;
