@@ -1,0 +1,74 @@
+{% load static %}
+
+<nav class="sidebar">
+    <div class="sidebar-top">
+        <span class="shrink-btn">
+            <i class='bx bx-chevron-left'></i>
+        </span>
+        <img src="{% static 'images/note_app_logo_white.svg' %}" class="sidebar-logo" alt="sidebar-logo-image">
+        <h3 class="hide sidebar-logo-text">Mini Notes</h3>
+    </div>
+
+    <div class="sidebar-links">
+        <ul>
+            <div class="active-tab"></div>
+            <li class="tooltip-element" data-tooltip="0">
+                <a href="{% url 'dashboard' %}" class="active" data-active="0">
+                    <div class="icon">
+                        <i class='bx bx-tachometer'></i>
+                        <i class='bx bxs-tachometer'></i>
+                    </div>
+                    <span class="link hide">Dashboard</span>
+                </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="1">
+                <a href="{% url 'addnote' %}" data-active="1">
+                    <div class="icon">
+                        <i class='bx bx-plus-circle'></i>
+                        <i class='bx bxs-plus-circle'></i>
+                    </div>
+                    <span class="link hide">Add Note</span>
+                </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="2">
+                <a href="{% url 'settings' %}" data-active="2">
+                    <div class="icon">
+                        <i class='bx bx-cog'></i>
+                        <i class='bx bxs-cog'></i>
+                    </div>
+                    <span class="link hide">Settings</span>
+                </a>
+            </li>
+            <div class="tooltip">
+                <span class="show">Dashboard</span>
+                <span>Add Note</span>
+                <span>Settings</span>
+            </div>
+        </ul>
+    </div>
+
+    <div class="sidebar-footer">
+        <a href="#" class="account tooltip-element" data-tooltip="0">
+            <div class="icon">
+                <i class='bx bx-user-circle'></i>
+                <i class='bx bxs-user-circle'></i>
+            </div>
+        </a>
+        <div class="admin-user tooltip-element" data-tooltip="1">
+            <div class="admin-profile hide">
+                <img src="{% static 'images/account_circle.svg' %}" alt="" class="sidebar-account-image">
+
+                <div class="admin-info">
+                    <h3>John Doe</h3>
+                </div>
+            </div>
+            <a href="#" class="log-out">
+                <i class='bx bx-log-out'></i>
+            </a>
+        </div>
+        <div class="tooltip">
+            <span class="show">John Doe</span>
+            <span>Logout</span>
+        </div>
+    </div>
+</nav>

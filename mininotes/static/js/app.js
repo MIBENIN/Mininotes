@@ -3,9 +3,6 @@ const sidebar_links = document.querySelectorAll(".sidebar-links a");
 const active_tab = document.querySelector(".active-tab");
 const tooltip_elements = document.querySelectorAll(".tooltip-element");
 
-const dashboard = document.querySelector(".dashboard");
-const noteDetails = document.querySelector(".note-details");
-
 let activeIndex;
 
 shrink_btn.addEventListener("click", () => {
@@ -17,35 +14,7 @@ shrink_btn.addEventListener("click", () => {
   setTimeout(() => {
     shrink_btn.classList.remove("hovered");
   }, 500);
-
-  updateElementMargin(dashboard, "5.4rem", "16rem");
-  updateElementMargin(noteDetails, "5.4rem", "16rem");
 });
-
-function updateElementMargin(element, shrinkedMargin, expandedMargin) {
-  const isShrinked = document.body.classList.contains("shrink");
-  const screenWidth = window.innerWidth;
-
-  if (screenWidth < 768) {
-    element.style.marginLeft = "5.4rem";
-  } else {
-    element.style.marginLeft = isShrinked ? shrinkedMargin : expandedMargin;
-  }
-}
-
-function checkScreenWidth(element) {
-  const screenWidth = window.innerWidth;
-  if (screenWidth < 768) {
-    element.style.marginLeft = "5.4rem";
-  } else {
-    element.style.marginLeft = isShrinked ? shrinkedMargin : expandedMargin;
-  }
-  updateElementMargin(dashboard, "5.4rem", "16rem");
-  updateElementMargin(noteDetails, "5.4rem", "16rem");
-}
-
-checkScreenWidth(dashboard);
-checkScreenWidth(noteDetails);
 
 function moveActiveTab() {
   let topPosition = activeIndex * 58 + 2.5;
@@ -82,5 +51,3 @@ function showTooltip() {
 tooltip_elements.forEach((elem) => {
   elem.addEventListener("mouseover", showTooltip);
 });
-
-window.addEventListener("resize", checkScreenWidth);

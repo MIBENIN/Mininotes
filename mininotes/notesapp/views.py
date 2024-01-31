@@ -29,3 +29,7 @@ def notedetails(request, slug):
 
 def addNote(request):
     return render(request, 'addnote.html')
+
+
+def settings(request):
+    return render(request, 'settings.html')

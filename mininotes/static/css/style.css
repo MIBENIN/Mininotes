@@ -119,6 +119,7 @@ h1,h2,h3,h4,h5,h6{
 
 /* sidebar */
 .sidebar {
+  z-index: 1000;
     position: fixed;
     top: 0;
     left: 0;
@@ -250,7 +251,6 @@ h1,h2,h3,h4,h5,h6{
     left: 0;
     transition: top 0.3s;
   }
-  
   .sidebar-footer {
     position: relative;
     margin-top: auto;
