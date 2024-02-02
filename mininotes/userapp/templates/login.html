@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<header class="login-header">
+    <nav class="login-nav container">
+        <a href="{% url 'noteapp:homepage' %}" class="logo"><img src="{% static 'images/note_app_logo.svg' %}"
+                alt="logo_image" class="logo-image"><span class="logo-text">MINI
+                NOTES</span></a>
+        <div>
+            <a href="{% url 'userapp:register' %}" class="sign-up-btn">Sign up</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <section class="login-hero-section container">
+
+        <form method="post" class="login-form" novalidate>
+            {% csrf_token %}
+
+            <h2 class="form-title">Login Form</h2>
+
+            {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="login-btn">Submit</button>
+            <p class="login-form-login-link-para">Don't have an account? Please <a href="{% url 'userapp:register' %}">
+                    Sign up</a>.
+            </p>
+        </form>
+    </section>
+</main>
+{% endblock %}

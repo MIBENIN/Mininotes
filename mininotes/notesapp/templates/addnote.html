@@ -8,13 +8,6 @@
         <h1>Add Note</h1>
     </header>
     <main class="addnote-main content-container">
-        <!-- {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-            <div class="{{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        </div>
-        {% endif %} -->
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}

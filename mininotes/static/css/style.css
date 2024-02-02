@@ -86,29 +86,6 @@ h1,h2,h3,h4,h5,h6{
   text-decoration: underline;
 }
 
-/* #message-box {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.message {
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  color: #fff;
-  position: relative;
-}
-
-.success {
-  background-color: #4CAF50;
-}
-
-.error {
-  background-color: #f44336;  
-}
- */
 
 .dashboard,
 .note-details,
@@ -124,10 +101,14 @@ h1,h2,h3,h4,h5,h6{
 }
 
 /* home page */
-.home-header{
+.home-header,
+.register-header,
+.login-header{
     padding: 1.5em 0;
 }
-.home-nav{
+.home-nav,
+.login-nav,
+.register-nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -165,7 +146,9 @@ h1,h2,h3,h4,h5,h6{
     background-color:var(--light-color);
     margin-left: 1em;
 }
-.home-hero-section{
+.home-hero-section,
+.login-hero-section,
+.register-hero-section{
     min-height:100vh;
     display: flex;
     align-items: center;
@@ -691,6 +674,57 @@ br {
   align-items: center;
   gap:1em;
   margin-top: 1em;
+}
+
+/* register page */
+.register-hero-section,
+.login-hero-section{
+  padding-top: 0;
+}
+.register-form,
+.login-form{
+  text-align: left;
+  padding: 1em;
+}
+.form-title{
+    padding: 1em 0;
+}
+.form-group{
+  margin-bottom: 1.5em;
+}
+.form label,
+.form-control{
+  width:100%;
+}
+.form-control{
+  padding: 1em;
+  border:.1em solid var(--secondary-color);
+  border-radius: .5em;
+  margin-top: 1em;
+}
+.register-btn,
+.login-btn{
+  width:100%;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  font-weight: 700;
+  border: .1em solid var(--primary-color);
+  border-radius: .5em;
+  padding: 1em ;
+}
+.register-form-login-link-para,
+.login-form-login-link-para{
+  color:var(--secondary-color);
+  margin-top: 2em;
+  text-align: center;
+}
+.register-form-login-link-para a{
+  color:var(--primary-color)
+}
+.errorlist li{
+  color: red;
+  margin-top: .5em;
+  font-size: .8rem;
 }
 @media screen and (min-width:768px){
     .logo-image{

@@ -4,12 +4,12 @@
 {% block content %}
 <header class="home-header">
     <nav class="home-nav container">
-        <a href="#" class="logo"><img src="{% static 'images/note_app_logo.svg' %}" alt="logo_image"
-                class="logo-image"><span class="logo-text">MINI
+        <a href="{% url 'noteapp:homepage' %}" class="logo"><img src="{% static 'images/note_app_logo.svg' %}"
+                alt="logo_image" class="logo-image"><span class="logo-text">MINI
                 NOTES</span></a>
         <div>
-            <button class="sign-in-btn">Sign in</button>
-            <button class="sign-up-btn">Sign up</button>
+            <a href="{% url 'userapp:login' %}" class="sign-in-btn">Sign in</a>
+            <a href="{% url 'userapp:register' %}" class="sign-up-btn">Sign up</a>
         </div>
     </nav>
 </header>
