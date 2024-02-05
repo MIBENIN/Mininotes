@@ -130,17 +130,21 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .sign-in-btn,
-.sign-up-btn{
+.sign-up-btn,
+.dashboard-btn,
+.logout-btn{
     padding: .5em 1em;
     border-radius: .5em;
     font-weight: 600;
 }
-.sign-up-btn{
+.sign-up-btn,
+.logout-btn{
     background-color: var(--primary-color);
     border:none;
     color:var(--light-color);
 }
-.sign-in-btn{
+.sign-in-btn,
+.dashboard-btn{
     border:.1em solid var(--primary-color);
     color:var(--primary-color);
     background-color:var(--light-color);
@@ -735,7 +739,9 @@ br {
         font-size: 3rem;
     }
     .sign-in-btn,
-    .sign-up-btn{
+    .sign-up-btn,
+    .dashboard-btn,
+    .logout-btn{
         padding: .8em 2em;
     }
     .home-hero-image{

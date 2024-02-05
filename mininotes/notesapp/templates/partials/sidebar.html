@@ -48,6 +48,7 @@
     </div>
 
     <div class="sidebar-footer">
+        {% if user.is_authenticated %}
         <a href="#" class="account tooltip-element" data-tooltip="0">
             <div class="icon">
                 <i class='bx bx-user-circle'></i>
@@ -59,7 +60,7 @@
                 <img src="{% static 'images/account_circle.svg' %}" alt="" class="sidebar-account-image">
 
                 <div class="admin-info">
-                    <h3>John Doe</h3>
+                    <h3>{{ user.username }}</h3>
                 </div>
             </div>
             <a href="{% url 'userapp:logout' %}" class="log-out">
@@ -67,8 +68,9 @@
             </a>
         </div>
         <div class="tooltip">
-            <span class="show">John Doe</span>
+            <span class="show">{{ user.username }}</span>
             <span>Logout</span>
         </div>
     </div>
+    {% endif %}
 </nav>
