@@ -507,6 +507,16 @@ h1,h2,h3,h4,h5,h6{
   margin-left: .5em;
   border-radius: .5em;
 }
+
+.dashboard-search-item-result{
+  text-align: center;
+  width: max-content;
+  margin:  3em auto;
+  font-size: 1.8rem;
+  font-weight: 600;
+  padding: 1em .3em;
+  color:var(--primary-light-color)
+}
 /* note card  */
 .notes-container{
   display: flex;

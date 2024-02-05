@@ -10,7 +10,8 @@
         <h1>Dashboard</h1>
 
         <form class="dashboard-search-box" role="search">
-            <input class="dashboard-form-control" type="search" placeholder="Search" aria-label="Search">
+            <input class="dashboard-form-control" type="search" placeholder="Search" aria-label="Search"
+                name="search-query">
             <button class="dashboard-search-btn" type="submit"> <span class="visually-hidden">Search</span>
                 <img src="{% static 'images/search.svg' %}" alt=""> </button>
         </form>
@@ -32,8 +33,14 @@
         </div>
         <!-- Notes -->
         <div class="notes-container">
+
+            {% if no_results_message %}
+            <p class="dashboard-search-item-result">{{ no_results_message }}</p>
+
+            {% else %}
             <!-- Note card -->
             {% for note in notes %}
+
             <div class="note-card">
                 <div class="note-card-tag"><img src="{% static 'images/tag.svg' %}" class="note-card-tag-icon"><span
                         class="note-card-tag-content">{{note.tags}}</span></div>
@@ -53,6 +60,7 @@
                 </div>
             </div>
             {% endfor %}
+            {% endif %}
         </div>
     </main>
 </div>

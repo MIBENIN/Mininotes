@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from . models import Note
 from .forms import NoteForm
+from django.db.models import Q
 
 
 def homepage(request):
@@ -13,10 +14,21 @@ def homepage(request):
 
 def dashboard(request):
     notes = Note.objects.all()
+
+    query = request.GET.get('search-query')
+    if query:
+        notes = notes.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(tags__icontains=query)
+        ).distinct()
     context = {
         "page_title": "MiniNotes | Dashboard",
         "notes": notes,
     }
+    if not notes.exists():
+        context['no_results_message'] = "No search items found."
+        context['page_title'] = "MiniNotes | Dashboard - No Results"
     return render(request, "dashboard.html", context)
 
 
