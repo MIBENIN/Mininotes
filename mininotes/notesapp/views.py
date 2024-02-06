@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from . models import Note
-from .forms import NoteForm
+from .forms import NoteForm, EditProfileForm
 from django.db.models import Q
+# from django.db.models.functions import Lower
 
 
 def homepage(request):
@@ -13,20 +14,23 @@ def homepage(request):
 
 
 def dashboard(request):
-    notes = Note.objects.all()
+    all_notes = Note.objects.all()
 
     query = request.GET.get('search-query')
     if query:
-        notes = notes.filter(
+        all_notes = all_notes.filter(
             Q(title__icontains=query) |
             Q(content__icontains=query) |
             Q(tags__icontains=query)
         ).distinct()
+
+    all_notes = all_notes.order_by('-date_created')
+
     context = {
         "page_title": "MiniNotes | Dashboard",
-        "notes": notes,
+        "notes": all_notes,
     }
-    if not notes.exists():
+    if not all_notes.exists():
         context['no_results_message'] = "No search items found."
         context['page_title'] = "MiniNotes | Dashboard - No Results"
     return render(request, "dashboard.html", context)
@@ -89,4 +93,27 @@ def deleteNote(request, slug):
 
 
 def settings(request):
-    return render(request, 'settings.html')
+    user = request.user
+    context = {
+        'page_title': "MiniNotes | Settings",
+        'user': user,
+    }
+    return render(request, 'settings.html', context)
+
+
+def editProfile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Profile updated successfully")
+            return redirect('noteapp:settings')
+        else:
+            messages.error(request, "Plaese fix the form")
+    else:
+        form = EditProfileForm(instance=request.user)
+    context = {
+        'page_title': "MiniNotes | Edit Profile",
+        "form": form
+    }
+    return render(request, 'editprofile.html', context)

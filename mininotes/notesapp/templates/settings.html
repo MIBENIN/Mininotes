@@ -8,7 +8,32 @@
         <h1>Settings</h1>
     </header>
     <main class="settings-main content-container">
+        <div>
+            <h2>Account Information</h2>
+            <div class="settings-account-info-details-div">
+                <div class="settings-account-field-div">
+                    <h3 class="settings-account-field-title">Firstname</h3>
+                    <strong class="settings-account-field-content">{{ user.first_name }}</strong>
+                </div>
 
+                <div class="settings-account-field-div">
+                    <h3 class="settings-account-field-title">Lastname</h3>
+                    <strong class="settings-account-field-content">{{ user.last_name }}</strong>
+                </div>
+
+                <div class="settings-account-field-div">
+                    <h3 class="settings-account-field-title">Email</h3>
+                    <strong class="settings-account-field-content">{{ user.email }}</strong>
+                </div>
+
+                <div class="settings-account-field-div">
+                    <h3 class="settings-account-field-title">Date Joined</h3>
+                    <strong class="settings-account-field-content">{{user.date_joined|date:"Y-m-d"}}</strong>
+                </div>
+
+                <a href="{% url 'noteapp:edit_profile' %}" class="edit-profile-link">Edit Profile</a>
+            </div>
+        </div>
     </main>
 </div>
 {% endblock %}

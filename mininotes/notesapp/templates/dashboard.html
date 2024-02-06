@@ -19,23 +19,14 @@
     </header>
     <main class="dashboard-main content-container">
         <div class="dashboard-title-div">
-            <h2 class="dashboard-title">Notes</h2>
-            <div>
-                <label for="sort-notes" class="dashboard-select-label">Sort by</label>
-                <select id="sort-notes" name="sort_by" class="dashboard-select-notes" aria-label="Sort the notes">
-                    <option selected value="Newest">Newest</option>
-                    <option value="Oldest">Oldest</option>
-                    <option value="A-Z">A-Z</option>
-                    <option value="Tag">Tag</option>
-                </select>
-
-            </div>
+            <h2 class="dashboard-title">Notes ({% if notes %}{{ notes.count }}{% else %}0{% endif %})</h2>
         </div>
         <!-- Notes -->
         <div class="notes-container">
 
             {% if no_results_message %}
             <p class="dashboard-search-item-result">{{ no_results_message }}</p>
+
 
             {% else %}
             <!-- Note card -->

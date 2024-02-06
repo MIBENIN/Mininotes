@@ -12,4 +12,5 @@ urlpatterns = [
     path('note/settings/', views.settings, name="settings"),
     path('note/notedetails/<slug:slug>/',
          views.notedetails, name='notedetails'),
+    path('edit-profile/', views.editProfile, name='edit_profile'),
 ]

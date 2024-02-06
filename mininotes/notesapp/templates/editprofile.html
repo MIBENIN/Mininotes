@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+<div class="editprofile">
+    <header class="editprofile-header content-container">
+        <h1>Edit Profile</h1>
+    </header>
+    <main class="editprofile-main content-container">
+        <form method="post" class="editprofile-form" novalidate>
+            {% csrf_token %}
+
+            <h2 class="form-title">Edit Profile Form</h2>
+
+            {% for field in form %}
+            <div class="form-group">
+                {{ field.label_tag }} {{ field }}
+                {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="editprofile-btn">Submit</button>
+            </p>
+        </form>
+    </main>
+</div>
+{% endblock %}

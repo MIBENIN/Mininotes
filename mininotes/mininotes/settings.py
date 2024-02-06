@@ -98,7 +98,9 @@ AUTHENTICATION_BACKENDS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+# Display time based on Indian Standard Time (IST)
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
