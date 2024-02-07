@@ -11,16 +11,26 @@ body{
     background-color: var(--body-color);
 }
 
-:root{
+:root,html[data-theme='light'] {
     --body-color:#edf7fc;
     --primary-color:#307fe2;
     --primary-light-color:#6aa8f4;
-    --secondary-color:#423E3B;
+    --secondary-color:#7b7570;
     --light-color:#ffffff;
     --dark-color:#000000;
     --font-body:"Roboto", sans-serif;
     --font-heading:"Bebas Neue", sans-serif;
 }
+html[data-theme='dark']{
+  --body-color: #252525; /* Dark background color */
+    --primary-color: #86bbf9; /* Adjusted primary color */
+    --primary-light-color: #a7d2f9; /* Adjusted primary light color */
+    --secondary-color: #a3a19d; /* Adjusted secondary color */
+    --light-color: #2d2d2d;
+     /* Darker light color */
+    --dark-color: #ffffff; /* Light text color */
+} 
+
 .container{
     width:90%;
     max-width: 1080px;
@@ -31,8 +41,12 @@ button{
 }
 h1,h2,h3,h4,h5,h6{
   font-family: var(--font-heading);
+  color: var(--dark-color);
 }
 
+label{
+  color:var(--dark-color)
+}
 /* toast */
 
 #message-box {
@@ -225,6 +239,7 @@ h1,h2,h3,h4,h5,h6{
   
   .sidebar-logo-text {
     padding-left: 0.5rem;
+    color:var(--light-color);
     font-family: var(--font-heading);
     font-weight: 600;
     font-size: 2rem;
@@ -610,7 +625,11 @@ h1,h2,h3,h4,h5,h6{
   width:18px;
   height:18px;
 }
-
+.note-details-date-created,
+.note-details-date-modified,
+.note-details-tag{
+  color:var(--dark-color);
+}
 .note-details-header,
 .editnote-header{
   flex-direction: row;
@@ -696,7 +715,9 @@ br {
   gap:1em;
   margin-top: 1em;
 }
-
+.delete-note-question{
+  color:var(--dark-color);
+}
 /* register page */
 .register-hero-section,
 .login-hero-section{
@@ -785,6 +806,29 @@ br {
   border: .1em solid var(--primary-color);
   border-radius: .5em;
   padding: 1em ;
+}
+.theme-div{
+  margin: 2em 0;
+}
+.settings-theme-div{
+  display: flex;
+  align-items: center;
+  gap:1em;
+  margin-top: 1em;
+}
+.theme-button{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  padding: 1em 3em;
+  background-color: var(--primary-color);
+  border-radius: 1em;
+  border: .1em solid var(--primary-color);
+  color:var(--light-color);
+  font-weight: 600;
+}
+.theme-button.active{
+  outline: 2px solid var(--dark-color);
 }
 @media screen and (min-width:768px){
     .logo-image{

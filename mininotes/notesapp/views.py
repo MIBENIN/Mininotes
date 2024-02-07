@@ -3,6 +3,7 @@ from django.contrib import messages
 from . models import Note
 from .forms import NoteForm, EditProfileForm
 from django.db.models import Q
+
 # from django.db.models.functions import Lower
 
 

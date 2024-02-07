@@ -34,6 +34,18 @@
                 <a href="{% url 'noteapp:edit_profile' %}" class="edit-profile-link">Edit Profile</a>
             </div>
         </div>
+        <div class="theme-div">
+            <h2 class="settings-theme-title">Theme Preference</h2>
+            <div class="settings-theme-div">
+                <button class="theme-button day-mode-btn" onclick="setLightMode()"><img
+                        src="{% static 'images/light_mode.svg' %}" class="theme-btn-icon"><span
+                        class="theme-btn-text">Light Mode</span></button>
+                <button class="theme-button night-mode-btn" onclick="setDarkMode()"><img
+                        src="{% static 'images/dark_mode.svg' %}" class="theme-btn-icon"><span
+                        class="theme-btn-text">Night
+                        Mode</span></button>
+            </div>
+        </div>
     </main>
 </div>
 {% endblock %}

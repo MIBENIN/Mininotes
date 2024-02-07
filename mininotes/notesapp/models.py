@@ -9,13 +9,10 @@ class Note(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     tags = models.CharField(max_length=255, blank=True, null=True)
-    slug = models.SlugField(unique=True)  # Add a SlugField
+    slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
-    # def save(self, *args, **kwargs):
-    #     self.slug = slugify(self.title)  # Generate slug from the title
-    #     super().save(*args, **kwargs)
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
         queryset = Note.objects.filter(slug__startswith=original_slug)

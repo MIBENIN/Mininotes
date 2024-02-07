@@ -9,7 +9,7 @@
     </header>
     <main class="deletenote-main content-container">
         <div class="delete-note-box">
-            <p class="delete-note-question">Are you sure you want to delete the note "{{ note.title }}"?</p>
+            <p class="delete-note-question">Are you sure you want to delete the note "{{ note.title }}" ?</p>
             <form method="post" action="{% url 'noteapp:deletenote' slug=note.slug %}" class="delete-note-form">
                 {% csrf_token %}
                 <button type="submit" class="delete-note-btn"><img src="{% static 'images/delete.svg' %}"
