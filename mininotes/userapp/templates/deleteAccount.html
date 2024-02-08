@@ -1,0 +1,30 @@
+<!-- delete_confirmation.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'partials/sidebar.html' %}
+<div class="delete-account">
+    <header class="delete-account-header content-container">
+        <h1>Delete Account</h1>
+    </header>
+    <main class="delete-account-main content-container">
+        <div class="delete-account-box">
+            <p class="delete-account-question">Are you sure you want to delete your account?</p>
+            <form method="post" action="{% url 'userapp:delete_account' %}" class="delete-account-form">
+                {% csrf_token %}
+                <button type="submit" class="delete-account-btn"><img src="{% static 'images/delete.svg' %}"
+                        class="delete-account-delete-icon">
+                    <span class="delete-account-delete-text">Delete</span></button>
+
+                <a href="{% url 'noteapp:settings' %}" class="delete-account-cancel-link">
+                    <img src="{% static 'images/cancel.svg' %}" class="delete-account-cancel-icon">
+                    <span class="delete-account-cancel-text">Cancel</span>
+                </a>
+            </form>
+
+        </div>
+    </main>
+</div>
+{% endblock %}

@@ -46,6 +46,14 @@
                         Mode</span></button>
             </div>
         </div>
+        <div class="settings-delete-account-div">
+            <h2 class="settings-delete-account-title">Delete Account</h2>
+            <div class="delete-account-div">
+                <p class="delete-account-warning-message">Once you delete your account, there is no going back, Please
+                    be certain!!</p>
+                <a href="{% url 'userapp:delete_account' %}" class="settings-account-delete-btn">Delete your account</a>
+            </div>
+        </div>
     </main>
 </div>
 {% endblock %}

@@ -52,3 +52,12 @@ def logOut(request):
     logout(request)
     messages.info(request, "You have successfully logged out.")
     return redirect("noteapp:homepage")
+
+
+def delete_account(request):
+    if request.method == 'POST':
+        request.user.delete()
+        messages.success(request, "Account deleted successfully")
+        logout(request)
+        return redirect('noteapp:homepage')
+    return render(request, 'deleteAccount.html', {'page_title': 'MiniNotes | Account Deletion'})
