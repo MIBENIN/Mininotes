@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+handleSidebar();
+
 // toast
 
 const messageBox = document.getElementById("message-box");
@@ -54,13 +56,10 @@ closeButtons.forEach((button) => {
 });
 
 const shrink_btn = document.querySelector(".shrink-btn");
-// const sidebar_links = document.querySelectorAll(".sidebar-links a");
 const tooltip_elements = document.querySelectorAll(".tooltip-element");
 
 shrink_btn.addEventListener("click", () => {
   document.body.classList.toggle("shrink");
-  setTimeout(moveActiveTab, 400);
-
   shrink_btn.classList.add("hovered");
 
   setTimeout(() => {
@@ -83,29 +82,15 @@ tooltip_elements.forEach((elem) => {
   elem.addEventListener("mouseover", showTooltip);
 });
 
-// theme
-// const storedTheme = localStorage.getItem("theme");
+function handleSidebar() {
+  if (window.innerWidth < 768) {
+    document.body.classList.add("shrink");
+    document.body.classList.remove("expanded");
+  } else {
+    document.body.classList.remove("shrink");
+    document.body.classList.add("expanded");
+  }
+}
 
-// if (storedTheme === "dark") {
-//   setDarkMode();
-// } else {
-//   setLightMode();
-// }
-
-// function setLightMode() {
-//   document.documentElement.setAttribute("data-theme", "light");
-//   document.querySelector(".day-mode-btn").classList.add("active");
-//   document.querySelector(".night-mode-btn").classList.remove("active");
-
-//   // Store the selected theme mode in local storage
-//   localStorage.setItem("theme", "light");
-// }
-
-// function setDarkMode() {
-//   document.documentElement.setAttribute("data-theme", "dark");
-//   document.querySelector(".night-mode-btn").classList.add("active");
-//   document.querySelector(".day-mode-btn").classList.remove("active");
-
-//   // Store the selected theme mode in local storage
-//   localStorage.setItem("theme", "dark");
-// }
+// Add event listener for window resize
+window.addEventListener("resize", handleSidebar);

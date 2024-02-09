@@ -11,7 +11,6 @@
 
     <div class="sidebar-links">
         <ul>
-            <!-- <div class="active-tab"></div> -->
             <li class="tooltip-element" data-tooltip="0">
                 <a href="{% url 'noteapp:dashboard' %}" data-active="0">
                     <div class="icon">
@@ -60,7 +59,7 @@
                 <img src="{% static 'images/account_circle.svg' %}" alt="" class="sidebar-account-image">
 
                 <div class="admin-info">
-                    <h3>{{ user.username }}</h3>
+                    <h3 class="sidebar-username">{{ user.username }}</h3>
                 </div>
             </div>
             <a href="{% url 'userapp:logout' %}" class="log-out">

@@ -3,7 +3,6 @@ from django.contrib import messages
 from . models import Note
 from .forms import NoteForm, EditProfileForm
 from django.db.models import Q
-
 # from django.db.models.functions import Lower
 
 
@@ -15,8 +14,8 @@ def homepage(request):
 
 
 def dashboard(request):
-    all_notes = Note.objects.all()
-
+    all_notes = Note.objects.filter(user=request.user)
+    print(all_notes)
     query = request.GET.get('search-query')
     if query:
         all_notes = all_notes.filter(
@@ -31,9 +30,12 @@ def dashboard(request):
         "page_title": "MiniNotes | Dashboard",
         "notes": all_notes,
     }
-    if not all_notes.exists():
+    if not all_notes.exists() and not query:
+        context['no_results_message'] = "No notes found."
+        context['page_title'] = "MiniNotes | Dashboard - No Notes"
+    elif not all_notes.exists() and query:
         context['no_results_message'] = "No search items found."
-        context['page_title'] = "MiniNotes | Dashboard - No Results"
+        context['page_title'] = "MiniNotes | Dashboard - No Search Results"
     return render(request, "dashboard.html", context)
 
 
@@ -50,13 +52,13 @@ def addNote(request):
     if request.method == 'POST':
         form = NoteForm(request.POST)
         if form.is_valid():
-            # Save the form data to the database
             note = form.save(commit=False)
-            # note.user = request.user  # Assuming you have user authentication
+            note.user = request.user
             note.save()
             messages.success(request, 'Note Added Successfully.')
-            # Redirect to a success page or any other view
             return redirect('noteapp:dashboard')
+        else:
+            messages.error(request, 'Please correct the form')
     else:
         form = NoteForm(initial={'title': request.GET.get('title', ''), 'tags': request.GET.get(
             'tags', ''), 'content': request.GET.get('content', '')})
@@ -74,7 +76,8 @@ def editNote(request, slug):
             messages.success(request, 'Note Edited Successfully.')
 
             return redirect('noteapp:dashboard')
-
+        else:
+            messages.error(request, 'Please correct the form')
     else:
         form = NoteForm(instance=note)
 
@@ -110,7 +113,7 @@ def editProfile(request):
             messages.success(request, "Profile updated successfully")
             return redirect('noteapp:settings')
         else:
-            messages.error(request, "Plaese fix the form")
+            messages.error(request, 'Please correct the form')
     else:
         form = EditProfileForm(instance=request.user)
     context = {

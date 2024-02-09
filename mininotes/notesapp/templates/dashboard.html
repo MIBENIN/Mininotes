@@ -13,7 +13,7 @@
             <input class="dashboard-form-control" type="search" placeholder="Search" aria-label="Search"
                 name="search-query">
             <button class="dashboard-search-btn" type="submit"> <span class="visually-hidden">Search</span>
-                <img src="{% static 'images/search.svg' %}" alt=""> </button>
+                <img src="{% static 'images/search.svg' %}" alt="" class="dashboard-search-btn-icon"> </button>
         </form>
 
     </header>
@@ -30,27 +30,30 @@
 
             {% else %}
             <!-- Note card -->
-            {% for note in notes %}
+            <div class="notes-div">
+                {% for note in notes %}
 
-            <div class="note-card">
-                <div class="note-card-tag"><img src="{% static 'images/tag.svg' %}" class="note-card-tag-icon"><span
-                        class="note-card-tag-content">{{note.tags}}</span></div>
-                <a href="{% url 'noteapp:notedetails' slug=note.slug %}" class="note-card-title">{{ note.title }}</a>
-                <p class="note-card-content">{{ note.content|slice:":60" }}{% if note.content|length > 20 %}...</p>
-                {% endif %}
-                <div class="note-card-details-div">
-                    <div class="note-card-date-div">
-                        <img src="{% static 'images/date.svg' %}" class="note-card-date-icon">
-                        <span class="note-card-date-content">{{ note.date_modified|date:"M d, y"}}</span>
-                    </div>
-                    <div class="note-card-delete-div">
-                        <a href="{% url 'noteapp:deletenote' slug=note.slug %}" class="note-card-delete-link"><img
-                                src="{% static 'images/delete.svg' %}" class="note-card-delete-icon"><span
-                                class="note-card-delete-content">Delete</span></a>
+                <div class="note-card">
+                    <div class="note-card-tag"><img src="{% static 'images/tag.svg' %}" class="note-card-tag-icon"><span
+                            class="note-card-tag-content">{{note.tags}}</span></div>
+                    <a href="{% url 'noteapp:notedetails' slug=note.slug %}" class="note-card-title">
+                        {{note.title|slice:":45" }}{% if note.title|length > 45 %}...{% endif %}</a>
+                    <p class="note-card-content">{{ note.content|slice:":60" }}{% if note.content|length > 20 %}...</p>
+                    {% endif %}
+                    <div class="note-card-details-div">
+                        <div class="note-card-date-div">
+                            <img src="{% static 'images/date.svg' %}" class="note-card-date-icon">
+                            <span class="note-card-date-content">{{ note.date_modified|date:"M d, y"}}</span>
+                        </div>
+                        <div class="note-card-delete-div">
+                            <a href="{% url 'noteapp:deletenote' slug=note.slug %}" class="note-card-delete-link"><img
+                                    src="{% static 'images/delete.svg' %}" class="note-card-delete-icon"><span
+                                    class="note-card-delete-content">Delete</span></a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
             {% endif %}
         </div>
     </main>

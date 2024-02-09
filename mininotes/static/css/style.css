@@ -42,6 +42,13 @@ h1,h2,h3,h4,h5,h6{
   font-family: var(--font-heading);
   color: var(--dark-color);
 }
+html[data-theme='dark'] [class$='-icon'] ,
+html[data-theme='dark'] .sidebar-account-image,
+html[data-theme='dark'] .sidebar-logo,
+html[data-theme='dark'] .bx-log-out,
+html[data-theme='dark'] .bx-chevron-left{
+  filter: invert(1) !important;
+}
 
 label{
   color:var(--dark-color)
@@ -110,6 +117,7 @@ label{
 .delete-account
 {
   margin-left: 5.4rem;
+  transition: margin-left 0.3s ease;
 }
 
 .content-container{
@@ -380,7 +388,9 @@ label{
     font-size: 1rem;
     line-height: 1;
   }
-  
+  .sidebar-username{
+    color: var(--light-color);
+  }
   .log-out {
     display: flex;
     height: 54px;
@@ -514,12 +524,11 @@ label{
 .settings-main{
   padding: 2em 0;
 }
-/* .dashboard-title-div{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap:.5em;
-} */
+.notes-div{
+  display: grid;
+  gap:1em;
+  grid-template-columns: 1fr;
+}
 .dashboard-select-label{
     font-weight: 600;
 }
@@ -609,6 +618,7 @@ label{
 .note-card-content{
   font-size: .9rem;
   color:var(--secondary-color);
+  word-break: break-all;
 }
 .note-card-details-div{
   justify-content: space-between;
@@ -864,6 +874,7 @@ br {
 .delete-account-btn{
   padding: .3em 1em;
 }
+
 @media screen and (min-width:768px){
     .logo-image{
         width:4rem;
@@ -893,6 +904,9 @@ br {
       align-items: center;
       justify-content: space-between;
     }
+    .notes-div{
+      grid-template-columns: 1fr 1fr;
+    }
     .note-card{
       max-width: 19.5rem;
     }
@@ -902,7 +916,27 @@ br {
       font-size: 1rem;
     }
 }
+.expanded .dashboard,
+.expanded .note-details,
+.expanded .addnote,
+.expanded .editnote,
+.expanded .deletenote,
+.expanded .settings,
+.expanded .editprofile,
+.expanded .delete-account {
+  margin-left: 16rem;
+}
 
+.shrink .dashboard,
+.shrink .note-details,
+.shrink .addnote,
+.shrink .editnote,
+.shrink .deletenote,
+.shrink .settings,
+.shrink .editprofile,
+.shrink .delete-account {
+  margin-left: 5.4rem;
+}
 @media screen and (min-width:1080px) {
   .note-card-tag-content,
 .note-card-date-content,
@@ -910,6 +944,9 @@ br {
 .note-details-delete-link-text,
 .note-details-edit-link-text{
   font-size: 1rem;
+}
+.notes-div{
+  grid-template-columns: repeat(3,1fr);
 }
 .note-card{
   max-width: 22rem;

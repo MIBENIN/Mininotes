@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 
 class Note(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=255)
     content = models.TextField()
     tags = models.CharField(max_length=255, blank=True, null=True)
