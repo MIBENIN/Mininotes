@@ -3,7 +3,7 @@ from django.contrib import messages
 from . models import Note
 from .forms import NoteForm, EditProfileForm
 from django.db.models import Q
-# from django.db.models.functions import Lower
+from django.contrib.auth.decorators import login_required
 
 
 def homepage(request):
@@ -13,9 +13,9 @@ def homepage(request):
     return render(request, "index.html", context)
 
 
+@login_required(login_url='userapp:login')
 def dashboard(request):
     all_notes = Note.objects.filter(user=request.user)
-    print(all_notes)
     query = request.GET.get('search-query')
     if query:
         all_notes = all_notes.filter(
@@ -39,6 +39,7 @@ def dashboard(request):
     return render(request, "dashboard.html", context)
 
 
+@login_required(login_url='userapp:login')
 def notedetails(request, slug):
     note = get_object_or_404(Note, slug=slug)
     context = {
@@ -48,6 +49,7 @@ def notedetails(request, slug):
     return render(request, 'notedetails.html', context)
 
 
+@login_required(login_url='userapp:login')
 def addNote(request):
     if request.method == 'POST':
         form = NoteForm(request.POST)
@@ -66,6 +68,7 @@ def addNote(request):
     return render(request, 'addnote.html', {'page_title': "MiniNotes | Add Note", 'form': form})
 
 
+@login_required(login_url='userapp:login')
 def editNote(request, slug):
     note = get_object_or_404(Note, slug=slug)
 
@@ -84,6 +87,7 @@ def editNote(request, slug):
     return render(request, 'editnote.html', {'page_title': "MiniNotes | Edit Note", 'form': form})
 
 
+@login_required(login_url='userapp:login')
 def deleteNote(request, slug):
     note = get_object_or_404(Note, slug=slug)
 
@@ -96,6 +100,7 @@ def deleteNote(request, slug):
     return render(request, 'deleteNote.html', {'page_title': "MiniNotes | Delete Note", 'note': note})
 
 
+@login_required(login_url='userapp:login')
 def settings(request):
     user = request.user
     context = {
@@ -105,6 +110,7 @@ def settings(request):
     return render(request, 'settings.html', context)
 
 
+@login_required(login_url='userapp:login')
 def editProfile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)

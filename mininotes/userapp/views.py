@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
 from .forms import RegisterForm, LoginForm
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -50,10 +51,11 @@ def login(request):
 
 def logOut(request):
     logout(request)
-    messages.info(request, "You have successfully logged out.")
+    messages.success(request, "You have successfully logged out.")
     return redirect("noteapp:homepage")
 
 
+@login_required(login_url='userapp:login')
 def delete_account(request):
     if request.method == 'POST':
         request.user.delete()
