@@ -216,7 +216,7 @@ label{
     position: fixed;
     top: 0;
     left: 0;
-    min-height: 100vh;
+    height: 100vh;
     background-color: var(--primary-color);
     width: 16rem;
     padding: 1.8rem 0.85rem;
@@ -839,8 +839,9 @@ br {
 .theme-button{
   display: flex;
   align-items: center;
-  gap: .5em;
-  padding: 1em 3em;
+  justify-content: center;
+  gap: .2em;
+  padding: 1em;
   background-color: var(--primary-color);
   border-radius: 1em;
   border: .1em solid var(--primary-color);
@@ -861,7 +862,7 @@ br {
   display: inline-block;
   width: max-content;
   background-color: #f44336;
-  padding: 1em 2em;
+  padding: 1em;
   border-radius: .9em;
   color:var(--light-color);
   font-weight: 600;
